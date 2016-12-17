@@ -5,23 +5,23 @@ import {List} from "native-base";
 
 const TransactionList = ({transactions, onItemClick}) => {
   const perDayTransactions = new Map();
+  debugger;
 
-  transactions.forEach(t => {
-    if (!perDayTransactions.has(t.date)) {
-      perDayTransactions.set(t.date, []);
-    }
-
-    perDayTransactions.get(t.date).push(t);
-  });
+  transactions
+    .sort((t1, t2) =>t1.date > t2.date  ? 1 : t1.date  < t2.date  ? -1 : 0)
+    .forEach(t => {
+      if (!perDayTransactions.has(t.date)) {
+        perDayTransactions.set(t.date, []);
+      }
+      perDayTransactions.get(t.date).push(t);
+    });
 
   const result = [];
 
+  debugger;
   perDayTransactions.forEach(
     (perDay, index) => {
-      result.push(<DateBasedList key={index}
-                                 date={index}
-                                 transactions={perDay}
-                                 onItemClick={onItemClick}/>)
+      result.push(<DateBasedList key={index} date={index} transactions={perDay} onItemClick={onItemClick}/>)
     }
   );
 

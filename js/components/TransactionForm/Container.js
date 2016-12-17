@@ -3,7 +3,7 @@ import {Alert,BackAndroid} from "react-native";
 import {connect} from "react-redux";
 import Form from "./Form";
 import {bindActionCreators} from "redux";
-import {login} from "../../actions/loginActions";
+import {saveTransaction} from "../../actions/transactionActions";
 
 class Container extends Component {
 
@@ -20,7 +20,8 @@ class Container extends Component {
   }
 
   onSubmit(data) {
-    debugger;
+    this.props.actions.saveTransaction(data);
+    this.props.navigator.pop();
   }
 
   render() {
@@ -35,7 +36,8 @@ class Container extends Component {
 }
 
 Container.propTypes = {
-  navigator: PropTypes.object.isRequired
+  navigator: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 
@@ -49,7 +51,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
-      login
+      saveTransaction
     }, dispatch)
   };
 }
