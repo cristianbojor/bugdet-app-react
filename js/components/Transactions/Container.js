@@ -22,6 +22,8 @@ class TransactionsContainer extends Component {
 
   onTransactionClick(event, transactionId) {
     event.preventDefault();
+    debugger;
+    console.log(transactionId);
     const transaction = this.props.transactions.find(t=>t.id === transactionId);
 
     if (transaction) {

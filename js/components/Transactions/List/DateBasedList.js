@@ -9,7 +9,7 @@ const DateBasedList = ({date, transactions, onItemClick}) => {
 
   result.push(
     <ListItem key="header" itemDivider>
-      <Text>Date {date}</Text>
+      <Text>Date {date.toLocaleString()}</Text>
     </ListItem>
   );
 

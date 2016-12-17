@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react";
-import {Alert} from "react-native";
+import {Alert,BackAndroid} from "react-native";
 import {connect} from "react-redux";
 import Form from "./Form";
 import {bindActionCreators} from "redux";
@@ -10,6 +10,13 @@ class Container extends Component {
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    BackAndroid.addEventListener('hardwareBackPress', function() {
+      this.props.navigator.pop();
+      return true;
+    }.bind(this));
   }
 
   onSubmit(data) {
@@ -46,6 +53,5 @@ function mapDispatchToProps(dispatch) {
     }, dispatch)
   };
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Container)

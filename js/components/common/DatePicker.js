@@ -4,7 +4,7 @@ import {Button} from "native-base";
 
 class DatePicker extends React.Component {
   showPicker = async(options) => {
-
+    debugger;
     const {action, year, month, day} = await DatePickerAndroid.open(options);
     if (action !== DatePickerAndroid.dismissedAction) {
       var date = new Date(year, month, day);

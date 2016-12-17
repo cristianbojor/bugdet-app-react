@@ -30,6 +30,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <Navigator
+          ref={(nav) => {navigator = nav}}
           initialRoute={{id: 'transactions'}}
           renderScene={this.navigatorRenderScene}/>
       </Provider>
