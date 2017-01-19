@@ -3,12 +3,11 @@ import {View} from "react-native";
 import DateBasedList from "./DateBasedList";
 import {List} from "native-base";
 
-const TransactionList = ({transactions, onItemClick}) => {
+const TransactionList = ({transactions, onItemClick, onRemoveClick}) => {
   const perDayTransactions = new Map();
-  debugger;
 
   transactions
-    .sort((t1, t2) =>t1.date > t2.date  ? 1 : t1.date  < t2.date  ? -1 : 0)
+    .sort((t1, t2) => t1.date > t2.date  ? 1 : t1.date  < t2.date  ? -1 : 0)
     .forEach(t => {
       if (!perDayTransactions.has(t.date)) {
         perDayTransactions.set(t.date, []);
@@ -18,10 +17,13 @@ const TransactionList = ({transactions, onItemClick}) => {
 
   const result = [];
 
-  debugger;
   perDayTransactions.forEach(
     (perDay, index) => {
-      result.push(<DateBasedList key={index} date={index} transactions={perDay} onItemClick={onItemClick}/>)
+      result.push(<DateBasedList key={index}
+                                 date={index}
+                                 transactions={perDay}
+                                 onItemClick={onItemClick}
+                                 onRemoveClick={onRemoveClick}/>)
     }
   );
 

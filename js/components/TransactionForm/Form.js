@@ -13,7 +13,6 @@ class Form extends React.Component {
   }
 
   componentWillMount() {
-    debugger;
     this.props.initialize(this.props.initialValues);
   }
 
@@ -28,12 +27,12 @@ class Form extends React.Component {
         <Content>
           <List>
             <ListItem>
-              <Field name="category" component={(input) =>
+              <Field name="category" component={(props) =>
                 <Picker
                   iosHeader="Select one"
                   mode="dropdown"
-                  selectedValue={input.value}
-                  onValueChange={input.onChange}>
+                  selectedValue={props.input.value}
+                  onValueChange={(value) => props.input.onChange(value)}>
                   {this.renderCategories(categories)}
                 </Picker>
               }/>
@@ -44,10 +43,14 @@ class Form extends React.Component {
             </ListItem>
 
             <ListItem>
-              <Field name="date" component={DatePicker}/>
+              <Field name="price" label="Price" component={TextField}/>
+            </ListItem>
+
+            <ListItem>
+              <Field name="transaction_date" component={DatePicker}/>
             </ListItem>
           </List>
-          <Button style={{alignSelf: 'center', marginTop: 20, marginBottom: 20}} onPress={handleSubmit} title="Login"
+          <Button style={{alignSelf: 'center', marginTop: 20, marginBottom: 20}} onPress={handleSubmit}
                   color="#841584">Save</Button>
           <Text>{error}</Text>
         </Content>

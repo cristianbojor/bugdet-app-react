@@ -4,6 +4,8 @@ import {connect} from "react-redux";
 import Form from "./Form";
 import {bindActionCreators} from "redux";
 import {login} from "../../actions/loginActions";
+import Transactions from "../Transactions";
+import {AsyncStorage} from "react-native";
 
 class Login extends Component {
 
@@ -12,20 +14,25 @@ class Login extends Component {
     this.onLoginClick = this.onLoginClick.bind(this);
   }
 
-  onLoginClick({email, password}) {
-    // return new Promise(() => {
-    //   if (!['criss@mail.com'].includes(email) || password !== "password") {
-    //     throw new SubmissionError({_error: 'Invalid credentials!'})
-    //   } else {
-    // }
-    // })
+  onLoginClick(auth) {
+    login(auth).then(user_data => {
+      console.log('logged inuser data', user_data);
+      if (user_data) {
+        AsyncStorage.setItem('user_data', JSON.stringify(user_data));
+        this.props.navigator.push({
+          component: Transactions,
+          passProps: {
+            connected: true
+          }
+        });
+      }
+    });
 
-    this.props.navigator.push({
-      id: 'transactions'
-    })
   }
 
   render() {
+    console.log('login');
+
     return (
       <Form onSubmit={this.onLoginClick}/>
     );

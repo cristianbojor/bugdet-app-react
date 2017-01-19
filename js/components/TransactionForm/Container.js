@@ -20,12 +20,13 @@ class Container extends Component {
   }
 
   onSubmit(data) {
-    this.props.actions.saveTransaction(data);
+    console.log('saved', data);
+
+    saveTransaction(data);
     this.props.navigator.pop();
   }
 
   render() {
-    debugger;
     return (
       <Form onSubmit={this.onSubmit}
             categories={this.props.categories}
@@ -36,13 +37,11 @@ class Container extends Component {
 }
 
 Container.propTypes = {
-  navigator: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
+  navigator: PropTypes.object.isRequired
 };
 
 
 function mapStateToProps(state) {
-  debugger;
   return {
     categories: state.categories
   }
@@ -50,9 +49,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({
-      saveTransaction
-    }, dispatch)
   };
 }
 

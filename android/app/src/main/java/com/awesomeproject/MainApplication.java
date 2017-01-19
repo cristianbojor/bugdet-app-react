@@ -1,5 +1,6 @@
 package com.awesomeproject;
 
+import com.github.reactNativeMPAndroidChart.MPAndroidChartPackage;
 import android.app.Application;
 import android.util.Log;
 
@@ -24,8 +25,9 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new VectorIconsPackage()
+        new MainReactPackage(),
+        new VectorIconsPackage(),
+        new MPAndroidChartPackage()
       );
     }
 
@@ -34,6 +36,6 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public ReactNativeHost getReactNativeHost() {
-      return mReactNativeHost;
+    return mReactNativeHost;
   }
 }
