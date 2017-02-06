@@ -73,7 +73,7 @@ class TransactionsContainer extends Component {
     console.log('remove', transactionId);
     Alert.alert(
       'Remove',
-      'Are you sure you want to remove this parishioner ?',
+      'Are you sure you want to remove this transaction ?',
       [
         {text: 'Yes', onPress: () => this.transactionsRef.child(transactionId).remove()},
         {text: 'Cancel', onPress: () => {}}

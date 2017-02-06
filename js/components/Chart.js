@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {View, AppRegistry, StyleSheet} from 'react-native';
 import {Button} from "native-base";
 
-import {PieChart} from 'react-native-mp-android-chart';
+import {BarChart} from 'react-native-mp-android-chart';
 
 class Chart extends React.Component {
 
@@ -23,7 +23,7 @@ class Chart extends React.Component {
           yValues: [40, 21, 15, 9, 15],
           label: 'Confessions Legend',
           config: {
-            colors: ['#C0FF8C', '#FFF78C', '#FFD08C', '#8CEAFF', '#FF8C9D'],
+            colors: ['#FFF78C', '#FFC78C', '#FDD08C', '#ACEAFF', '#FF8C9C'],
 
             sliceSpace: 5,
             selectionShift: 13
@@ -45,7 +45,7 @@ class Chart extends React.Component {
     console.log('chart');
     return (
       <View style={styles.container}>
-        <PieChart
+        <BarChart
           style={styles.chart}
           logEnabled={true}
           backgroundColor={'#f0f0f0'}
